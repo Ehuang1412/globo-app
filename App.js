@@ -10,6 +10,8 @@ import { useFonts } from 'expo-font';
 // import AppLoading from 'expo';
 import AppLoading from 'expo-app-loading';
 import Header from './Header';
+import Footer from './Footer';
+import { navigationRef } from './RootNavigation';
 
 //define route
 const Stack = createStackNavigator();
@@ -27,6 +29,7 @@ export default function App() {
     return (
       <NavigationContainer
         style={{paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight:0}}
+        ref={ navigationRef }
       >
       {/*header is part of the screen*/}
         <Stack.Navigator 
@@ -42,9 +45,15 @@ export default function App() {
               header: ()=> <Header headerDisplay="Globomantics" />
             }} 
           />
+          
         </Stack.Navigator>
+        <Footer/>
       </NavigationContainer>
     );
   }
+
+  
 }
+
+
 // expo install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
