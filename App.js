@@ -12,47 +12,54 @@ import AppLoading from 'expo-app-loading';
 import Header from './Header';
 import Footer from './Footer';
 import { navigationRef } from './RootNavigation';
+import NewsDetail from './NewsDetail';
 
 //define route
 const Stack = createStackNavigator();
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
-    // 'OpenSans': require('./assets/fonts/OpenSans-Regular.ttf'),
-    'Inter-SemiBoldItalic': 'https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12',
-  })
+  // let [fontsLoaded] = useFonts({
+  //   'OpenSans': require('./assets/fonts/OpenSans-Regular.ttf'),
+  //   // 'Inter-SemiBoldItalic': 'https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12',
+  // })
 
-  if(!fontsLoaded) {
-    return <AppLoading/>;
-  }
-  else{
+  // if(!fontsLoaded) {
+  //   return <AppLoading/>;
+  // }
+  // else{
     return (
+     
       <NavigationContainer
-        style={{paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight:0}}
+        style={{paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0}}
         ref={ navigationRef }
       >
-      {/*header is part of the screen*/}
+        {/*header is part of the screen - Stack.Navigator*/}
         <Stack.Navigator 
           initialRouteName="Globomantics"
           headerMode="screen" 
         >
-        {/*//route*/}
-        
+          {/*//route - Stack.Screen*/}
           <Stack.Screen  
             name="Globomantics"
-            components={Homepage}
+            component={Homepage}
             options={{
               header: ()=> <Header headerDisplay="Globomantics" />
             }} 
           />
-          
+        
+          <Stack.Screen
+            name="NewsDetail"
+            component={NewsDetail}
+            options={{
+              header: () => <Header headerDisplay="News" />
+            }}
+          />
+
         </Stack.Navigator>
         <Footer/>
       </NavigationContainer>
     );
-  }
-
-  
+  // }
 }
 
 
