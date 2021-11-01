@@ -7,7 +7,8 @@ export default function Header (props){
         <View style={styles.header}>
             <Image source={logo} style={{ width: 35, height:35 }} />
             <View>
-                <Text style={styles.text}></Text>
+                {/*  <Text style={styles.text}></Text> */}
+                <Text style={styles.text} > This is the Header </Text>
             </View>
 
         </View>
@@ -19,9 +20,11 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 70,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: 'black'
     },
-    // text: {
+    text: {
+      color: 'orange'
     //     fontFamily: 'OpenSans'
-    // }
+    }
 })
