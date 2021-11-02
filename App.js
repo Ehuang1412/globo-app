@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import {NavigationContainer } from'@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Homepage from './Home';
 import { Platform } from 'react-native';
@@ -13,6 +13,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { navigationRef } from './RootNavigation';
 import NewsDetail from './NewsDetail';
+import AboutGlobo from './About';
 
 //define route
 const Stack = createStackNavigator();
@@ -27,40 +28,43 @@ export default function App() {
   //   return <AppLoading/>;
   // }
   // else{
-    return (
-     
-      <NavigationContainer
-        style={{paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0}}
-        ref={ navigationRef }
-      >
-        {/*header is part of the screen - Stack.Navigator*/}
-        <Stack.Navigator 
-          initialRouteName="Globomantics"
-          headerMode="screen" 
-        >
-          {/*//route - Stack.Screen*/}
-          <Stack.Screen  
-            name="Globomantics"
-            component={Homepage}
-            options={{
-              header: ()=> <Header headerDisplay="Globomantics" />
-            }} 
-          />
-        
-          <Stack.Screen
-            name="NewsDetail"
-            component={NewsDetail}
-            options={{
-              header: () => <Header headerDisplay="News" />
-            }}
-          />
+  return (
+    <NavigationContainer
+      style={{
+        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+      }}
+      ref={navigationRef}>
+      {/*header is part of the screen - Stack.Navigator*/}
+      <Stack.Navigator initialRouteName="Globomantics" headerMode="screen">
+        {/*//route - Stack.Screen*/}
+        <Stack.Screen
+          name="Globomantics"
+          component={Homepage}
+          options={{
+            header: () => <Header headerDisplay="Globomantics" />,
+          }}
+        />
 
-        </Stack.Navigator>
-        <Footer/>
-      </NavigationContainer>
-    );
+        <Stack.Screen
+          name="NewsDetail"
+          component={NewsDetail}
+          options={{
+            header: () => <Header headerDisplay="News" />,
+          }}
+        />
+
+        <Stack.Screen
+          name="About"
+          component={AboutGlobo}
+          options={{
+            header: () => <Header headerDisplay="About Globomantics" />,
+          }}
+        />
+      </Stack.Navigator>
+      <Footer />
+    </NavigationContainer>
+  );
   // }
 }
-
 
 // expo install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
