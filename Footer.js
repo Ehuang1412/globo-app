@@ -26,9 +26,9 @@ export default function Footer() {
         <Text> Quotes </Text>
       </TouchableOpacity>
 
-     <TouchableOpacity
+      <TouchableOpacity
         style={styles.button}
-        
+        onPress={() =>RootNavigation.navigate('Catalog')}
       >
         <Text> Catalog </Text>
       </TouchableOpacity>
