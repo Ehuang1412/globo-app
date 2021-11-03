@@ -21,7 +21,11 @@ export default function Footer() {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() =>RootNavigation.navigate('Quote')}
+        onPress={() =>RootNavigation.navigate('Quote', {
+            model: 'Footer',
+            modelnumber: 'NoMessage'
+          })
+        }
       >
         <Text> Quotes </Text>
       </TouchableOpacity>
