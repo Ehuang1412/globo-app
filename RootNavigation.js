@@ -25,6 +25,6 @@ export const navigationRef = React.createRef();
 /* add your own navigation function to use the navigation reference 
 to navigate to the desired route.*/
 
-export function navigate(name) {
-  navigationRef.current?.navigate(name);
+export function navigate(name, params) {
+  navigationRef.current?.navigate(name, params);
 }
